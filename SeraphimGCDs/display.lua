@@ -1,5 +1,9 @@
 -- %c1
 
+-- %c2
+
+-- %c3
+
 
 function()
     local strs = {}
@@ -13,6 +17,10 @@ function()
         seraDurS = string.format(cdFmtStr, aura_env.seraDur)
     end
     table.insert(strs, seraDurS)
+
+    table.insert(strs, string.format(cdFmtStr, aura_env.gcdCD))
+
+    table.insert(strs, string.format(cdFmtStr, aura_env.predGCD))
 
     return unpack(strs)
 end

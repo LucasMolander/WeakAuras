@@ -11,7 +11,11 @@ function()
         aura_env.gcdCD = gcdStart + gcdDur - currTime
     end
 
+    -- Get the Seraphim duration
     aura_env.seraDur = aura_env.getAuraDuration("Seraphim", "player")
+
+    -- Get the predicted GCD
+    aura_env.predGCD = aura_env.predictGCDDur()
 
     return true
 end
