@@ -14,7 +14,7 @@ end
 aura_env.getAuraDuration = function(spellName, unit)
     local expTime = (select(6, AuraUtil.FindAuraByName(spellName, unit)))
     if expTime == nil then
-        return nil
+        return 0
     else
         local currTime = GetTime()
         return expTime - currTime
