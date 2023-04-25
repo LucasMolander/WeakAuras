@@ -1,0 +1,13 @@
+{
+  "Lua.diagnostics.globals": [
+    "Enum",
+    "aura_env",
+    "UnitSpellHaste",
+    "max",
+    "GetTime",
+    "GetSpellCooldown",
+    "GetSpellCharges",
+    "IsPlayerSpell",
+    "GetSpellInfo"
+  ]
+}
