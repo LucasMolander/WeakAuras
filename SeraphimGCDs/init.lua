@@ -37,6 +37,9 @@ aura_env.getSpellCharges = function(spell_id)
     end
 end
 
+-- Initialize the height
+aura_env.region:SetRegionHeight(aura_env.config.max_height)
+
 
 -- This is nice for readability
 Spells = {
@@ -50,10 +53,10 @@ aura_env.power_type = Enum.PowerType.HolyPower
 -- Spell bookkeeping
 --
 aura_env.gcdID = 61304
-
 aura_env.lastGCDDur = 0
-
-
+aura_env.seraStartGCDDur = 0
+aura_env.lastFrameHadSera = false
+aura_env.currFrameHaveSera = false
 
 --
 -- This is also where we define some useful functions
