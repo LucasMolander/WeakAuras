@@ -2,6 +2,13 @@
 -- This is really just an event loop that does some logic
 --
 function()
+  aura_env.frame = aura_env.frame + 1
+  aura_env.printEveryFrame(144, "Trigger")
+
+  if aura_env.frame % 10 == 0 then
+    return true
+  end
+
   -- Re-initialize the bookkeeping
   aura_env.spellToCD = {}
   aura_env.spellToUsable = {}
@@ -56,8 +63,6 @@ function()
   end
 
   return true
-
-
 
 
   -- --

@@ -1,3 +1,15 @@
+print("Init")
+
+aura_env.frame = 0
+
+aura_env.printEveryFrame = function(period, str)
+  if aura_env.frame % period == 0 then
+    print(str)
+  end
+end
+
+
+
 --
 -- Nice wrappers around the WoW API
 --
@@ -27,12 +39,15 @@ aura_env.getSpellCharges = function(spell_id)
   end
 end
 
-aura_env.power_type = Enum.PowerType.HolyPower
 
-aura_env.getHPLeft = function()
+aura_env.getHolyPowerCapacity = function()
   local max = UnitPowerMax("player", Enum.PowerType.HolyPower)
   local curr = UnitPower("player", Enum.PowerType.HolyPower)
   return max - curr
+end
+
+aura_env.getUnitHealthPct = function(unitStr)
+  return UnitHealth(unitStr) / UnitHealthMax(unitStr)
 end
 
 
@@ -52,6 +67,15 @@ aura_env.getSpellInfo = function(spellID, part)
   return infoTable[part]
 end
 
+
+--[[
+Goals:
+1. Red-out spells that will over-cap
+2. Orange-out spells that would be bad
+   (e.g. Judgment if already have Judg debuff
+   or Divine Resonance are about to go off)
+3. Green-highlight the spell that's the best to press right now
+]]
 
 
 
@@ -119,12 +143,10 @@ aura_env.spellIDToInfo = {
 -- So you'll have to keep track of those yourself :)
 --
 aura_env.spellIDs = {
+  Spells.HammerOfWrath,
   Spells.BladeOfJustice,
   Spells.Judgment,
-  Spells.HammerOfWrath,
-  Spells.Consecration,
   Spells.CrusaderStrike,
-  Spells.ArcaneTorrent
 }
 
 

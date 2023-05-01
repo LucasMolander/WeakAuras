@@ -16,16 +16,16 @@
 
 
 function()
+  aura_env.printEveryFrame(144, "Display")
+
   local strs = {}
 
-  local cdFmtStr = "%.1f"
+
 
   strs = {}
   for spellID, info in pairs(aura_env.spellIDToInfo) do
     local holyPower = info[GenHolyPower]()
     local learned = IsPlayerSpell(spellID)
-
-    -- local spellStr = string.format("Spell ID %d: HP = %d, Learned = %s", spellID, holyPower, tostring(learned))
 
     local spellName = aura_env.getSpellInfo(spellID, SIPart.Name)
     local spellStr = string.format("%s: HP = %d, Learned = %s", spellName, holyPower, tostring(learned))
@@ -33,13 +33,12 @@ function()
     local minCharges, maxCharges = aura_env.getSpellCharges(spellID)
     spellStr = spellStr .. string.format(", charges = {%d, %d}", minCharges, maxCharges)
 
-    -- local info = {GetSpellInfo(spellID)}
-    -- local spellStr = aura_env.tableToStr(info)
-
     table.insert(strs, spellStr)
   end
 
-  table.insert(strs, tostring(aura_env.getHPLeft()))
+
+  table.insert(strs, tostring(aura_env.getHolyPowerCapacity()))
+  table.insert(strs, tostring(aura_env.getUnitHealthPct("target")))
 
   -- strs = {}
   -- for i, info in ipairs(aura_env.spellIDToInfo) do
@@ -56,6 +55,8 @@ function()
   -- -- Insert finishers
   -- -- TODO Move this to the
   -- aura_env.spell_queue_4 = {}
+
+  -- local cdFmtStr = "%.1f"
 
   -- local currQueue = {unpack(aura_env.spell_queue_3)}
   -- local currCDs = {}

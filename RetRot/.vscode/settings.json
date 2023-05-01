@@ -8,6 +8,11 @@
     "GetSpellCooldown",
     "GetSpellCharges",
     "IsPlayerSpell",
-    "GetSpellInfo"
+    "GetSpellInfo",
+    "IsUsableSpell",
+    "UnitPowerMax",
+    "UnitPower",
+    "UnitHealth",
+    "UnitHealthMax"
   ]
 }
